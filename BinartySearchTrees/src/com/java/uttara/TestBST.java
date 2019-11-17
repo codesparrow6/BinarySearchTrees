@@ -34,9 +34,13 @@ public class TestBST {
 		b.inOrderTrav();
 		
 		int minimum =b.min();
-		System.out.println("Minimum value of BSTree ="+minimum);
-		
 		int maximum = b.max();
+		
+		//Recursive approach
+		//int minimum =b.minRec();
+		//int maximum = b.maxRec();
+
+		System.out.println("Minimum value of BSTree ="+minimum);
 		System.out.println("Maximum value of BSTree ="+maximum);
 	}
 

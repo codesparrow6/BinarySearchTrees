@@ -21,6 +21,19 @@ public class BTree {
 	int max() {
 		return max(this.root);
 	}
+	
+	void insertRecur(int data){
+		this.root= insertRecur(this.root,data);
+		//System.out.println("Root="+this.root.getData());
+	}
+	
+	int maxRec(){
+		return maxRec(this.root);
+	}
+	
+	int minRec(){
+		return minRec(this.root);
+	}
 
 	//Iterative approach
 	void insert(BTNode root, int data) {
@@ -54,11 +67,6 @@ public class BTree {
 	}
 
 	//Recursive approach to insert data
-	void insertRecur(int data){
-		this.root= insertRecur(this.root,data);
-		//System.out.println("Root="+this.root.getData());
-	}
-	
 	BTNode insertRecur(BTNode root,int data){
 		if(null == root){
 			BTNode node = new BTNode(data);
@@ -128,6 +136,35 @@ public class BTree {
 				}
 			}
 			return maxm;
+		}
+	}
+	
+	//Recursive approach to find Min and Max
+	int maxRec(BTNode root){
+		if(root == null){
+			return -1;
+		}
+		else if(root.getRight()==null){
+			return root.getData();
+		}
+		else
+		{
+			int maxVal = maxRec(root.getRight());
+			return maxVal;
+		}
+	}
+	
+	int minRec(BTNode root){
+		if(root == null){
+			return -1;
+		}
+		else if(root.getLeft()==null){
+			return root.getData();
+		}
+		else
+		{
+			int minVal = minRec(root.getLeft());
+			return minVal;
 		}
 	}
 }
