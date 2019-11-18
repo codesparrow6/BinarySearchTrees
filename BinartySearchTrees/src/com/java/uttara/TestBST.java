@@ -27,8 +27,10 @@ public class TestBST {
 		b.insertRecur(40);
 		b.insertRecur(10);
 		b.insertRecur(70);*/
-		
 		System.out.println("Insertion ends");
+		
+		int rootInfo = b.getRoot();
+		System.out.println("Root="+rootInfo);
 		
 		System.out.println("Traversing output-");
 		b.inOrderTrav();
@@ -39,9 +41,29 @@ public class TestBST {
 		//Recursive approach
 		//int minimum =b.minRec();
 		//int maximum = b.maxRec();
-
 		System.out.println("Minimum value of BSTree ="+minimum);
 		System.out.println("Maximum value of BSTree ="+maximum);
+		
+		BTNode temp = b.delete(60);
+		
+		System.out.println("Traversing output after deletion-");
+		b.inOrderTrav();
+		
+		int newRoot = b.getRoot();
+		System.out.println("New root="+newRoot);
+		
+		//Check for the given data in BST
+		boolean check1 = b.checkBST(50);
+		boolean check2 = b.checkBST(60);
+		System.out.println("Check1="+check1);
+		System.out.println("Check2="+check2);
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

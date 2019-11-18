@@ -4,7 +4,11 @@ public class BTree {
 
 	BTNode root;
 
-	// wrapper classes
+	int getRoot(){
+		return this.root.getData();
+	}
+	 
+	//wrapper classes*********************************************************************************************
 	void insert(int data) {
 		insert(this.root, data);
 	}
@@ -35,7 +39,23 @@ public class BTree {
 		return minRec(this.root);
 	}
 
-	//Iterative approach
+	boolean checkBST(int data){
+		return checkBST(this.root,data);
+	}
+	
+	BTNode delete(int data){
+		return delete(this.root,data);
+	}
+	
+	//Check for a leaf node------------------------------------------------------------------------------------------------------------
+	boolean isLeaf(BTNode root){
+		if(root.getLeft()==null && root.getRight()==null)
+			return true;
+		else
+			return false;
+	}
+	
+	//Iterative approach to insert---------------------------------------------------------------------------------------------
 	void insert(BTNode root, int data) {
 		BTNode node = new BTNode(data);
 
@@ -66,7 +86,7 @@ public class BTree {
 		}
 	}
 
-	//Recursive approach to insert data
+	//Recursive approach to insert data-----------------------------------------------------------------------------------
 	BTNode insertRecur(BTNode root,int data){
 		if(null == root){
 			BTNode node = new BTNode(data);
@@ -87,7 +107,7 @@ public class BTree {
 		}
 	}
 	
-	// InOrder Traversal is used to print in sorted order
+	// InOrder Traversal is used to print in sorted order-----------------------------------------------------------------
 	void inOrderTrav(BTNode root) {
 		if (null == root) {
 			// System.out.println("No elements are present");
@@ -99,7 +119,7 @@ public class BTree {
 		}
 	}
 
-	// Find minimum value of BSTree
+	// Find minimum value of BSTree-----------------------------------------------------------------------------------------
 	int min(BTNode root) {
 		if (root == null) {
 			System.out.println("No elements are present in the root");
@@ -139,7 +159,7 @@ public class BTree {
 		}
 	}
 	
-	//Recursive approach to find Min and Max
+	//Recursive approach to find Min and Max----------------------------------------------------------------------
 	int maxRec(BTNode root){
 		if(root == null){
 			return -1;
@@ -167,4 +187,51 @@ public class BTree {
 			return minVal;
 		}
 	}
+	
+	//Search for a given data in BST---------------------------------------------------------------------------------------
+	boolean checkBST(BTNode root,int data){
+		if(null == root)
+			return false;
+		if(data == root.getData())
+			return true;
+		else if(data < root.getData())
+			return checkBST(root.getLeft(),data);
+		else 
+			return checkBST(root.getRight(),data);
+	}
+	
+	//Delete the given data in BST-----------------------------------------------------------------------------------
+	BTNode delete(BTNode root,int data){
+		if(null == root)
+			return null;
+		else if(data < root.getData()){
+			 root.setLeft(delete(root.getLeft(),data));
+		return root;
+		}
+		else if(data > root.getData()){
+			root.setRight(delete(root.getRight(),data));
+			return root;
+		}
+		else{
+			if(isLeaf(root))
+				return null;
+			else if(root.getLeft()!=null && root.getRight()==null)
+				return root.getLeft();
+			else if(root.getLeft()==null && root.getRight()!=null)
+				return root.getRight();
+			else{
+				BTNode temp =new BTNode( max(root.getLeft()));
+				root.setData(temp.getData());
+				root.setLeft(delete(root.getLeft(),root.getData()));
+				return root;
+			}
+		}
+	}
+	
+	
+	//Check given Tree is BST or Not
+	boolean isBST1(){
+		return true;
+	}
+	
 }
