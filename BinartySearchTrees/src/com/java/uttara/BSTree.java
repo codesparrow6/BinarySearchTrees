@@ -1,8 +1,8 @@
 package com.java.uttara;
 
-public class BTree {
+public class BSTree {
 
-	BTNode root;
+	BSTNode root;
 
 	int getRoot(){
 		return this.root.getData();
@@ -43,12 +43,12 @@ public class BTree {
 		return checkBST(this.root,data);
 	}
 	
-	BTNode delete(int data){
+	BSTNode delete(int data){
 		return delete(this.root,data);
 	}
 	
 	//Check for a leaf node------------------------------------------------------------------------------------------------------------
-	boolean isLeaf(BTNode root){
+	boolean isLeaf(BSTNode root){
 		if(root.getLeft()==null && root.getRight()==null)
 			return true;
 		else
@@ -56,14 +56,14 @@ public class BTree {
 	}
 	
 	//Iterative approach to insert---------------------------------------------------------------------------------------------
-	void insert(BTNode root, int data) {
-		BTNode node = new BTNode(data);
+	void insert(BSTNode root, int data) {
+		BSTNode node = new BSTNode(data);
 
 		if (root == null) {
 			this.root = node;
 			return;
 		} else {
-			BTNode temp = root;
+			BSTNode temp = root;
 			while (temp != null) {
 				if (data < temp.getData()) {
 					if (temp.getLeft() != null)
@@ -87,19 +87,19 @@ public class BTree {
 	}
 
 	//Recursive approach to insert data-----------------------------------------------------------------------------------
-	BTNode insertRecur(BTNode root,int data){
+	BSTNode insertRecur(BSTNode root,int data){
 		if(null == root){
-			BTNode node = new BTNode(data);
+			BSTNode node = new BSTNode(data);
 			return node;
 		}
 		else{
 			if(data < root.getData()){
-				BTNode left = insertRecur(root.getLeft(),data);
+				BSTNode left = insertRecur(root.getLeft(),data);
 				//System.out.println("Data is inserted" + left.getData());
 		        root.setLeft(left);	
 			}
 			else{
-				BTNode right = insertRecur(root.getRight(), data);
+				BSTNode right = insertRecur(root.getRight(), data);
 				//System.out.println("Data is inserted" + right.getData());
 				root.setRight(right);
 			}
@@ -108,7 +108,7 @@ public class BTree {
 	}
 	
 	// InOrder Traversal is used to print in sorted order-----------------------------------------------------------------
-	void inOrderTrav(BTNode root) {
+	void inOrderTrav(BSTNode root) {
 		if (null == root) {
 			// System.out.println("No elements are present");
 			return;
@@ -120,12 +120,12 @@ public class BTree {
 	}
 
 	// Find minimum value of BSTree-----------------------------------------------------------------------------------------
-	int min(BTNode root) {
+	int min(BSTNode root) {
 		if (root == null) {
 			System.out.println("No elements are present in the root");
 			return -1;
 		} else {
-			BTNode temp = root;
+			BSTNode temp = root;
 			int mini = 0;
 			while (temp != null) {
 				if (temp.getLeft() != null)
@@ -140,12 +140,12 @@ public class BTree {
 	}
 
 	//Find  maximum value of BSTree
-	int max(BTNode root) {
+	int max(BSTNode root) {
 		if (root == null) {
 			System.out.println("No elements are present in the root");
 			return -1;
 		} else {
-			BTNode temp = root;
+			BSTNode temp = root;
 			int maxm = 0;
 			while (temp != null) {
 				if (temp.getRight() != null)
@@ -160,7 +160,7 @@ public class BTree {
 	}
 	
 	//Recursive approach to find Min and Max----------------------------------------------------------------------
-	int maxRec(BTNode root){
+	int maxRec(BSTNode root){
 		if(root == null){
 			return -1;
 		}
@@ -174,7 +174,7 @@ public class BTree {
 		}
 	}
 	
-	int minRec(BTNode root){
+	int minRec(BSTNode root){
 		if(root == null){
 			return -1;
 		}
@@ -189,7 +189,7 @@ public class BTree {
 	}
 	
 	//Search for a given data in BST---------------------------------------------------------------------------------------
-	boolean checkBST(BTNode root,int data){
+	boolean checkBST(BSTNode root,int data){
 		if(null == root)
 			return false;
 		if(data == root.getData())
@@ -201,7 +201,7 @@ public class BTree {
 	}
 	
 	//Delete the given data in BST-----------------------------------------------------------------------------------
-	BTNode delete(BTNode root,int data){
+	BSTNode delete(BSTNode root,int data){
 		if(null == root)
 			return null;
 		else if(data < root.getData()){
@@ -220,7 +220,7 @@ public class BTree {
 			else if(root.getLeft()==null && root.getRight()!=null)
 				return root.getRight();
 			else{
-				BTNode temp =new BTNode( max(root.getLeft()));
+				BSTNode temp =new BSTNode( max(root.getLeft()));
 				root.setData(temp.getData());
 				root.setLeft(delete(root.getLeft(),root.getData()));
 				return root;

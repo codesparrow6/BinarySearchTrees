@@ -4,7 +4,7 @@ public class TestBST {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BTree b = new BTree();
+		BSTree b = new BSTree();
 		System.out.println("Insertion begins");
 		
 		
@@ -44,7 +44,7 @@ public class TestBST {
 		System.out.println("Minimum value of BSTree ="+minimum);
 		System.out.println("Maximum value of BSTree ="+maximum);
 		
-		BTNode temp = b.delete(60);
+		BSTNode temp = b.delete(60);
 		
 		System.out.println("Traversing output after deletion-");
 		b.inOrderTrav();

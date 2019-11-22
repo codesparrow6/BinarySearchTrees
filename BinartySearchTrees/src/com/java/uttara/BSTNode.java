@@ -1,24 +1,24 @@
 package com.java.uttara;
 
-public class BTNode {
+public class BSTNode {
 
-	private BTNode left,right;
+	private BSTNode left,right;
 	private int data;
 	
-	public BTNode (int data){
+	public BSTNode (int data){
 		this.data=data;
 	}
 	
-	public BTNode getLeft() {
+	public BSTNode getLeft() {
 		return left;
 	}
-	public void setLeft(BTNode left) {
+	public void setLeft(BSTNode left) {
 		this.left = left;
 	}
-	public BTNode getRight() {
+	public BSTNode getRight() {
 		return right;
 	}
-	public void setRight(BTNode right) {
+	public void setRight(BSTNode right) {
 		this.right = right;
 	}
 	public int getData() {
