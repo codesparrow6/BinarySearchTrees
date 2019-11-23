@@ -14,7 +14,7 @@ public class TestBST {
 		b.insert(50);
 		b.insert(30);
 		b.insert(100);
-		b.insert(40);
+		b.insert(100);
 		b.insert(10);
 		b.insert(70);
 		
@@ -58,6 +58,10 @@ public class TestBST {
 		System.out.println("Check1="+check1);
 		System.out.println("Check2="+check2);
 		
+		
+		//Check whether given BT is BST or Not.
+		boolean isBST = b.isBST();
+		System.out.println("IsBST="+isBST);
 		
 		
 		

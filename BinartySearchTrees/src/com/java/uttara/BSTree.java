@@ -47,6 +47,11 @@ public class BSTree {
 		return delete(this.root,data);
 	}
 	
+	boolean isBST(){
+		int mini_value=minRec();
+		return isBST(this.root,mini_value);
+	}
+	
 	//Check for a leaf node------------------------------------------------------------------------------------------------------------
 	boolean isLeaf(BSTNode root){
 		if(root.getLeft()==null && root.getRight()==null)
@@ -228,10 +233,23 @@ public class BSTree {
 		}
 	}
 	
-	
-	//Check given Tree is BST or Not
-	boolean isBST1(){
-		return true;
+	//Check given BinaryTree is BST or Not---------------------------------------------------------------------------------
+	boolean isBST(BSTNode root,int prev){
+		if(null == root){
+			return true;
+		}else{
+			boolean left = isBST(root.getLeft(),prev);
+			if(!left)
+				return left;
+			
+			if(prev > root.getData())
+				return false;
+			
+			prev = root.getData();
+			
+			boolean right = isBST(root.getRight(),prev);
+			return right;
+		}
 	}
 	
 }
