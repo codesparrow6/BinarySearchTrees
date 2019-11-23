@@ -3,7 +3,7 @@ package com.java.uttara;
 public class BSTNode {
 
 	private BSTNode left,right;
-	private int data;
+	private int data,size;
 	
 	public BSTNode (int data){
 		this.data=data;
@@ -27,5 +27,10 @@ public class BSTNode {
 	public void setData(int data) {
 		this.data = data;
 	}
-	
+	public void setSize(int size){
+		this.size = size;
+	}
+	public int getSize(){
+		return size;
+	}
 }
