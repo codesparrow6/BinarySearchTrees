@@ -1,8 +1,14 @@
+
+
 package com.java.uttara;
 
 public class BSTree {
 
 	BSTNode root;
+	
+	void setRoot(BSTNode node){
+		this.root= node;
+	}
 
 	int getRoot() {
 		return this.root.getData();
@@ -71,6 +77,14 @@ public class BSTree {
 		return kPosSmallest(this.root, k);
 	}
 
+	BSTNode builtBST(int[] a){
+		this.root = builtBST(a,0,a.length-1);
+		return root;
+	}
+	
+   void printRange(int k1,int k2){
+		printRange(this.root,k1,k2);
+	}
 	// #############################################################################################################################
 
 	// Iterative approach to
@@ -297,7 +311,7 @@ public class BSTree {
 		}
 	}
 
-	// Find the Kth smallest number based on the position of the node
+	// Find the 'Kth' smallest number based on the position of the node
 	BSTNode kPosSmallest(BSTNode root, int k) {
 		if (null == root)
 			return null;
@@ -317,4 +331,35 @@ public class BSTree {
 		}
 	}
 
+	//Create a BST from sorted array
+	BSTNode builtBST(int[] a,int low,int high){
+		
+		if(low > high)
+			return null;
+		else{
+			int mid = (low+high)/2;
+			BSTNode node = new BSTNode(a[mid]);
+			
+			node.setLeft(builtBST(a,low,mid-1));
+			node.setRight(builtBST(a,mid+1,high));
+			return node;
+		}
+	}
+	
+	//Print the range of node data in the BST
+	void printRange(BSTNode root,int k1,int k2){
+		if(null == root)
+			return;
+		else{
+			if(root.getData()>=k1)
+			printRange(root.getLeft(), k1, k2);
+			
+			if(root.getData()>=k1 && root.getData()<=k2)
+				 System.out.println(root.getData()+",");
+				 
+			if(root.getData()<=k2)	 
+			printRange(root.getRight(), k1, k2);
+		}
+	}
+ 	
 }

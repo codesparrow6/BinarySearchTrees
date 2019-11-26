@@ -5,13 +5,13 @@ public class TestBST {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BSTree b = new BSTree();
-		System.out.println("Insertion begins");
+		/*System.out.println("Insertion begins");
 
 		// insert iteratively
-		/*
+		
 		 * b.insert(60); b.insert(20); b.insert(50); b.insert(30);
 		 * b.insert(100); b.insert(80); b.insert(10); b.insert(70);
-		 */
+		 
 
 		// insert recursively
 		b.insertRecur(60);
@@ -68,6 +68,16 @@ public class TestBST {
 		BSTNode kPosSmallest = b.kPosSmallest(kPosPosition);
 		//if(null != kPosSmallest)
 		System.out.println("K-PosSmallest @ " + kPosPosition + "th position=" + kPosSmallest.getData());
+		*/
+     	//Create a BST from sorted array
+		int[] arr = {10,15,20,30,40,50,60,70,80};
+		BSTNode node = b.builtBST(arr);
+		//b.setRoot(node);
+	    b.inOrderTrav();
+	    b.printRange(20, 70);
+	    int rootInfo = b.getRoot();
+		System.out.println("Root=" + rootInfo);
+
 	}
 
 }
